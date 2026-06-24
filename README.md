@@ -1,5 +1,7 @@
-# UD-CFRP-Tensile-Coupon-Validation-Study
-HexPly® 8552/IM7 Unidirectional Prepreg — Ansys ACP + Mechanical FEA vs. Published Allowables
+# UD CFRP Tensile Coupon Validation Study
+### HexPly® 8552/IM7 Unidirectional Prepreg — Ansys ACP + Mechanical FEA vs. Published Allowables
+
+---
 
 ## Overview
 
@@ -44,6 +46,8 @@ This repository documents a finite element analysis (FEA) validation study of a 
 | Thickness | 1.572 mm |
 | Cross-sectional Area | 39.3 mm² |
 
+<img src="images/coupon_data.png" width="700"/>
+
 ---
 
 ## ACP Material Card — HexPly_8552_IM7_UD
@@ -79,7 +83,7 @@ This repository documents a finite element analysis (FEA) validation study of a 
 **Geometry:** Surface body (3 zones: left tab / gauge / right tab) created in SolidWorks, exported as Parasolid (.x_t), imported with shared topology in SpaceClaim.
 
 **Layup (ACP Pre):**
-- Material: `HexPly_8552_IM7_UD` (homogenized prepreg lamina — no separate fiber/matrix definition required)
+- Material: `HexPly_8552_IM7_UD` (homogenized prepreg lamina)
 - Fabric thickness: 0.131 mm/ply
 - Rosette: Parallel, fiber direction = coupon X-axis
 - Modeling ply: [0]₁₂, 12 layers, 0° angle
@@ -97,17 +101,39 @@ This repository documents a finite element analysis (FEA) validation study of a 
 | Fixed Support | hold1 (left tab) | All DOF constrained |
 | Force | hold2 (right tab) | Fx = 2,500 N (100 N/mm × 25 mm), Fy = Fz = 0 |
 
+<img src="images/bc_setup.png" width="700"/>
+
 ---
 
 ## Results
 
+### Full Coupon Stress and Strain
+
+<img src="images/total_stress.png" width="700"/>
+
+<img src="images/average_strain.png" width="700"/>
+
+<img src="images/average_stress.png" width="700"/>
+
 ### Gauge Section (Named Selection Scoped)
+
+<img src="images/gauge_stress.png" width="700"/>
+
+<img src="images/gauge_strain.png" width="700"/>
 
 | Result | Value |
 |---|---|
 | Normal Stress X — Average | 63.5 MPa |
 | Normal Elastic Strain X — Average | 3.871 × 10⁻⁴ m/m |
 | Total Deformation — Max | 14.09 mm |
+
+### Total Deformation
+
+<img src="images/total_deformation.png" width="700"/>
+
+### S1 Fiber Direction Stress
+
+<img src="images/s1_fiber_direction.png" width="700"/>
 
 ### Apparent Modulus Calculation
 
@@ -125,32 +151,6 @@ F_failure       = 2,500 × 42.9 = 107,250 N
 
 ---
 
-## Repository Structure
-
-```
-UD-CFRP-Tensile-Validation/
-├── README.md
-├── docs/
-│   ├── UD_CFRP_Validation_Report.docx
-│   └── methodology.md
-├── geometry/
-│   └── tensile_coupon.x_t
-├── acp_model/
-│   └── material_card.md
-├── results/
-│   ├── stress_strain.csv
-│   └── validation_summary.md
-├── reference_data/
-│   └── cmh17_properties.csv
-└── images/
-    ├── bc_setup.png
-    ├── normal_stress_gauge.png
-    ├── normal_strain_gauge.png
-    └── total_deformation_gauge.png
-```
-
----
-
 ## References
 
 1. Hexcel Corporation. *HexTow® IM7 Carbon Fiber Product Data Sheet*. 2023.
@@ -163,4 +163,7 @@ UD-CFRP-Tensile-Validation/
 
 ## Author
 
-**Khizar Siddiqui** — Aerospace & Mechanical Engineer  
+**Khizar Siddiqui** — Aerospace & Mechanical Engineer
+[GitHub](https://github.com/khizarsiddiqui2)
+
+> Related repository: [NACA0012-CFD-Validation](https://github.com/khizarsiddiqui2/NACA0012-CFD-Validation)
